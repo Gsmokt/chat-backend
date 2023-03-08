@@ -7,7 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "server": "node backend/server.js",
+    "server": "node server.js",
     "start": "concurrently \" npm run server\" \" node socket.js\""
   },
   "keywords": [],

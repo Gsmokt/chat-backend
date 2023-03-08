@@ -8,9 +8,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const messengerRoute = require("./routes/messengerRoute");
 
-dotenv.config({
-  path: "./config/config.env",
-});
+dotenv.config();
 
 app.use(bodyParser.json());
 app.use(cookieParser());
