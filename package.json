@@ -8,8 +8,7 @@
   },
   "scripts": {
     "server": "node backend/server.js",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \" npm run server\" \" node socket.js\""
+    "start": "concurrently \" npm run server\" \" node socket.js\""
   },
   "keywords": [],
   "author": "",
