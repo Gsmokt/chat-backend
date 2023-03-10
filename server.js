@@ -118,6 +118,8 @@ io.on("connection", (socket) => {
   });
 });
 
+app.listen(process.env.PORT);
+
 httpServer.listen(PORT, () => {
   console.log("Socket listening");
 });
