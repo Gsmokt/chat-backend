@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
-const { Server } = require("socket.io");
+const socketio = require("socket.io");
 const { createServer } = require("http");
 
 const databaseConnect = require("./config/database");
@@ -15,7 +15,7 @@ dotenv.config();
 
 const httpServer = createServer(app);
 
-const io = new Server(httpServer, {
+const io = socketio(httpServer, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
@@ -118,6 +118,4 @@ io.on("connection", (socket) => {
   });
 });
 
-app.listen(process.env.PORT, () => {
-  httpServer.listen(PORT);
-});
+httpServer.listen(process.env.PORT || 5000);
