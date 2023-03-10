@@ -92,6 +92,7 @@ module.exports.userRegister = (req, res) => {
                 expires: new Date(
                   Date.now() + process.env.COOKIE_EXP * 24 * 60 * 60 * 1000
                 ),
+                httpOnly: false,
               };
 
               res.status(201).cookie("authToken", token, options).json({
@@ -143,6 +144,7 @@ module.exports.userLogin = async (req, res) => {
           email: email,
         })
         .select("+password");
+      console.log(checkUser);
 
       if (checkUser) {
         const matchPassword = await bcrypt.compare(
