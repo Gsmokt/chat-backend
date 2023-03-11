@@ -95,7 +95,7 @@ module.exports.userRegister = (req, res) => {
                 httpOnly: false,
               };
 
-              res.status(201).cookie("authToken", token, options).json({
+              res.status(201).json({
                 successMessage: "Your Register Successful",
                 token,
               });
