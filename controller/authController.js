@@ -144,7 +144,6 @@ module.exports.userLogin = async (req, res) => {
           email: email,
         })
         .select("+password");
-      console.log(checkUser);
 
       if (checkUser) {
         const matchPassword = await bcrypt.compare(
@@ -172,7 +171,7 @@ module.exports.userLogin = async (req, res) => {
             ),
           };
 
-          res.status(200).cookie("authToken", token, options).json({
+          res.status(200).json({
             successMessage: "Your Login Successful",
             token,
           });
@@ -201,7 +200,7 @@ module.exports.userLogin = async (req, res) => {
 };
 
 module.exports.userLogout = (req, res) => {
-  res.status(200).cookie("authToken", "").json({
+  res.status(200).json({
     success: true,
   });
 };
