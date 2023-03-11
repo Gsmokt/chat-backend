@@ -15,29 +15,10 @@ dotenv.config();
 
 const httpServer = createServer(app);
 
-const io = socketio(httpServer, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
-});
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "Content-Type",
-    "Authorization"
-  );
-  next();
-});
-
+const io = socketio(httpServer);
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors({ credentials: true, origin: "*" }));
+app.use(cors());
 app.use("/api/messenger", authRouter);
 app.use("/api/messenger", messengerRoute);
 
