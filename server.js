@@ -15,7 +15,13 @@ dotenv.config();
 
 const httpServer = createServer(app);
 
-const io = socketio(httpServer);
+const io = socketio(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors());
