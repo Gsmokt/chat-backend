@@ -25,7 +25,7 @@ const io = socketio(httpServer, {
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(cors({ credentials: true }));
+app.use(cors({ credentials: true, origin: "*" }));
 app.use("/api/messenger", authRouter);
 app.use("/api/messenger", messengerRoute);
 
